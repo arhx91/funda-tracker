@@ -1,10 +1,13 @@
-import requests, uuid, json, os, datetime, xxhash, time, random, argparse, logging
+import requests, uuid, json, os, datetime, xxhash, time, random, argparse, logging 
 from . import utils
 from typing import Literal
+from dotenv import load_dotenv
 
 import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+load_dotenv()
 
 # GLOBALS
 user_agent = [
@@ -478,7 +481,7 @@ def cli():
         db_host=os.environ.get("HOST")
     )
 
-    utils.db_setup("funda", funda_schema, CONNECTION)
+    utils.db_setup("funda", get_funda_schema(), CONNECTION)
 
     parser = argparse.ArgumentParser()
 

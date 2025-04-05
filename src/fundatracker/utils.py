@@ -5,6 +5,7 @@ CONNECTION = None
 def get_database_connection(db_name="", db_user="", db_password="", db_host="", db_port=5432):
     global CONNECTION
     if CONNECTION:
+        print("SUCCESS")
         return CONNECTION
     else:
         try:
@@ -16,6 +17,7 @@ def get_database_connection(db_name="", db_user="", db_password="", db_host="", 
                 port=db_port,
             )
             CONNECTION.autocommit = True
+            print("SUCCESS")
             return CONNECTION
 
         except psycopg2.OperationalError as e:
